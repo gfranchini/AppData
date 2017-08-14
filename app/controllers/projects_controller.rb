@@ -15,6 +15,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    3.times { @project.environments.build }
   end
 
   # GET /projects/1/edit
@@ -69,6 +70,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :description, :rancher)
+      params.require(:project).permit(:name, :description, :rancher, environments_attributes: [:environment])
     end
 end

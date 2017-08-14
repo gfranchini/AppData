@@ -15,10 +15,10 @@
   <%= @project.rancher %>
 </p>
 
-<p>
-  <strong>Environments:</strong>
-  <%= @project.environments.inspect %>
-</p>
+<h2>Environments: </h2>
+<% @project.environments.each do |x|  %>
+  <p><%= x.environment%></p>
+<% end %>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
