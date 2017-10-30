@@ -9,7 +9,7 @@
 5.times do |x|
   Project.create!(
     name: "Project #{x + 1}",
-    description: "Netus consequat a vestibulum lacus suspendisse a aptent dis at turpis consequat diam ad ornare accumsan eu euismod suscipit erat non.",
+    description: "Dashboard for IBOs.",
     rancher: true
   )
 end

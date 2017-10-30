@@ -28,11 +28,6 @@
     <%= form.check_box :rancher, id: :project_rancher %>
   </div>
 
-  <div class="field">
-    <%= form.label :rancher %>
-    <%= form.check_box :rancher, id: :project_rancher %>
-  </div>
-
   <%= form.fields_for(:environments) do |environment_form| %>
     <li>
       <%= environment_form.label :environment %>
