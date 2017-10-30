@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170811160748) do
+ActiveRecord::Schema.define(version: 20171030173337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,5 +31,21 @@ ActiveRecord::Schema.define(version: 20170811160748) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "servers", force: :cascade do |t|
+    t.string "hostname"
+    t.string "ip"
+    t.integer "cpu"
+    t.integer "memory"
+    t.integer "storage"
+    t.text "location"
+    t.text "notes"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "operating_system"
+    t.index ["project_id"], name: "index_servers_on_project_id"
+  end
+
   add_foreign_key "environments", "projects"
+  add_foreign_key "servers", "projects"
 end

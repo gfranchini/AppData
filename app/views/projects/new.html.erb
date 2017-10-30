@@ -1,5 +1,5 @@
 <h1>New Project</h1>
-
+<div class="container">
 <%= form_with(model: @project, local: true) do |form| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
@@ -13,32 +13,96 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
     <%= form.text_field :name, id: :project_name %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :description, id: :project_description %>
+    <%= form.text_area :description, id: :project_description, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :rancher %>?
     <%= form.check_box :rancher, id: :project_rancher %>
   </div>
 
+<!-- Form for environments -->
   <%= form.fields_for(:environments, Environment.new) do |environment_form| %>
-    <div class="field">
+    <div class="form-group">
       <%= environment_form.label :environment %> :
-      <%= environment_form.select :environment, ['Dev', 'QA', 'Staging', 'Training', 'Production'] %>
+      <%= environment_form.select :environment, ['Dev', 'QA', 'Staging', 'Training', 'Production'], class: "form-control" %>
     </div>
   <% end %>
+<!-- End form for environments -->
+
+<!-- Form for tables -->
+  <%= form.fields_for(:servers, Server.new) do |server_form| %>
+    <table id="server-table" class="table">
+      <thead>
+        <tr>
+          <th>Hostname</th>
+          <th>IP</th>
+          <th>OS</th>
+          <th>CPU</th>
+          <th>Memory</th>
+          <th>Storage</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <div id="server-row">
+          <tr>
+            <td><%= server_form.text_field :hostname, class: "form-control" %></td>
+            <td><%= server_form.text_field :ip, class: "form-control" %></td>
+            <td><%= server_form.select :operating_system, ["Ubuntu 14.04", "Ubuntu 16.04", "CentOS 6", "Centos 7"], class: "form-control" %></td>
+            <td><%= server_form.number_field :cpu, class: "form-control" %></td>
+            <td><%= server_form.number_field :memory, class: "form-control" %></th>
+            <td><%= server_form.number_field :storage, class: "form-control" %></td>
+            <td><%= server_form.text_field :location, class: "form-control" %></td>
+          </tr>
+        </div>
+      </tbody>
+    </table>
+    <td><button type="button" id="add-server" class="btn btn-primary">Add Another Server!</button></td>
+  <% end %>
+
+  <hr>
+
+<!-- End form for tables -->
 
   <div class="actions">
-    <%= form.submit "Save Project" %>
+    <%= form.submit "Save Project", class: "btn btn-success" %>
   </div>
 <% end %>
 
+</div>
 
 <%= link_to 'Back', projects_path %>
+
+
+<!-- JavaScript -->
+
+<script>
+    $(document).ready(function(){
+        var count = 1;
+        $("#add-server").click(function(){
+          $("#server-table").append('\
+            <tbody> \
+              <tr> \
+                <td><input class="form-control" type="text" name="project[servers_attributes][' + count + '][hostname]" id="project_servers_attributes_' + count + '_hostname"></td> \
+                <td><input class="form-control" type="text" name="project[servers_attributes][' + count + '][ip]" id="project_servers_attributes_' + count + '_ip"></td> \
+                <td><select name="project[servers_attributes][' + count + '][operating_system]" id="project_servers_attributes_' + count + '_operating_system"><option value="Ubuntu 14.04">Ubuntu 14.04</option><option value="Ubuntu 16.04">Ubuntu 16.04</option><option value="CentOS 6">CentOS 6</option><option value="Centos 7">Centos 7</option></select></td> \
+                <td><input class="form-control" type="number" name="project[servers_attributes][' + count + '][cpu]" id="project_servers_attributes_' + count + '_cpu"></td> \
+                <td><input class="form-control" type="number" name="project[servers_attributes][' + count + '][memory]" id="project_servers_attributes_' + count + '_memory"></td> \
+                <td><input class="form-control" type="number" name="project[servers_attributes][' + count + '][storage]" id="project_servers_attributes_' + count + '_storage"></td> \
+                <td><input class="form-control" type="number" name="project[servers_attributes][' + count + '][location]" id="project_servers_attributes_' + count + '_location"></td> \
+              </tr > \
+            </tbody> \
+          ');
+          count++;
+        });
+    });
+</script>
