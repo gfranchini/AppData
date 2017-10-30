@@ -24,19 +24,19 @@
   </div>
 
   <div class="field">
-    <%= form.label :rancher %>
+    <%= form.label :rancher %>?
     <%= form.check_box :rancher, id: :project_rancher %>
   </div>
 
-  <%= form.fields_for(:environments) do |environment_form| %>
-    <li>
-      <%= environment_form.label :environment %>
-      <%= environment_form.text_field :environment %>
-    </li>
+  <%= form.fields_for(:environments, Environment.new) do |environment_form| %>
+    <div class="field">
+      <%= environment_form.label :environment %> :
+      <%= environment_form.select :environment, ['Dev', 'QA', 'Staging', 'Training', 'Production'] %>
+    </div>
   <% end %>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Save Project" %>
   </div>
 <% end %>
 

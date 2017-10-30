@@ -10,18 +10,9 @@
   Project.create!(
     name: "Project #{x + 1}",
     description: "Dashboard for IBOs.",
-    rancher: true
+    rancher: true,
+    environments_attributes: [{environment: 'Dev'}]
   )
 end
 
 puts "5 projects were created."
-
-
-5.times do |x|
-  Environment.create!(
-    environment: "Dev",
-    project_id: "#{x + 1}"
-  )
-end
-
-puts "5 environments were created."
