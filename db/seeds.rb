@@ -6,14 +6,49 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-5.times do |x|
-  Project.create!(
-    name: "Project #{x + 1}",
-    description: "Dashboard for IBOs.",
-    rancher: true,
-    environments_attributes: [{environment: 'Dev'}]
-  )
-end
+# 5.times do |x|
+#   Project.create!(
+#     name: "Project #{x + 1}",
+#     description: "Dashboard for IBOs.",
+#     rancher: true,
+#     environments_attributes: [{environment: 'Dev'}]
+#   )
+# end
+
+Project.create!(
+  name: "Chat",
+  description: "Internal tool to communicate with team members.",
+  rancher: true,
+  environments_attributes: [{environment: 'Dev'}, {environment: 'QA'}, {environment: 'Production'}]
+)
+
+Project.create!(
+  name: "IBO-IMS",
+  description: "Internal tool to check sales of IBOs.",
+  rancher: false,
+  environments_attributes: [{environment: 'Dev'}]
+)
+
+Project.create!(
+  name: "Client Services",
+  description: "Internal tool to communicate with team members.",
+  rancher: false,
+  environments_attributes: [{environment: 'Dev'}]
+)
+
+Project.create!(
+  name: "CASE",
+  description: "Internal tool that's always broken.",
+  rancher: true,
+  environments_attributes: [{environment: 'Dev'}]
+)
+
+Project.create!(
+  name: "Great DataWorks",
+  description: "Database for data.",
+  rancher: true,
+  environments_attributes: [{environment: 'Dev'}]
+)
 
 puts "5 projects were created."
 
