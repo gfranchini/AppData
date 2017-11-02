@@ -71,7 +71,7 @@ class ProjectsController < ApplicationController
     def project_params
       params.require(:project).permit(:name, :description, :rancher,
         environments_attributes: [:environment],
-        servers_attributes: [:hostname, :ip, :cpu, :memory, :storage, :location, :notes, :operating_system]
+        servers_attributes: [:hostname, :ip, :cpu, :memory, :storage, :location, :notes, :operating_system, :id, :_destroy]
       )
     end
 end
