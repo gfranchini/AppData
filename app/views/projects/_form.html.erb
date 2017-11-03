@@ -1,32 +1,61 @@
-<%= form_with(model: project, local: true) do |form| %>
-  <% if project.errors.any? %>
+<%= form_with(model: @project, local: true) do |form| %>
+  <% if @project.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
       <ul>
-      <% project.errors.full_messages.each do |message| %>
+      <% @project.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :project_name %>
+    <%= form.text_field :name, id: :project_name, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :description, id: :project_description %>
+    <%= form.text_area :description, id: :project_description, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :rancher %>
-    <%= form.check_box :rancher, id: :project_rancher %>
+  <div class="form-group">
+    <%= form.label :environment_id %>
+    <%= form.select :environment_id, [['Dev', 1], ['QA',2], ['Production', 3], ['Training', 4], ['Staging', 5], ['Test', 6]], {},  class: "form-control" %>
   </div>
+
+<!-- Start form for Servers -->
+  <h2>Add Servers: </h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Hostname</th>
+        <th>IP</th>
+        <th>OS</th>
+        <th>CPU</th>
+        <th>Memory</th>
+        <th>Storage</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <div>
+        <%= form.fields_for(:servers) do |server_form| %>
+          <%= render 'server_fields', f: server_form %>
+        <% end %>
+      </div>
+    </tbody>
+  </table>
+  <div>
+    <%= link_to_add_association 'Add Server', form, :servers, class: "btn btn-primary" %>
+  </div>
+<!-- End form for Servers -->
+
+<hr>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Save Project", class: "btn btn-success" %>
   </div>
 <% end %>

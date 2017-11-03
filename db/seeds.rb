@@ -15,39 +15,60 @@
 #   )
 # end
 
+Environment.create!(
+  environment: "Dev"
+)
+
+Environment.create!(
+  environment: "QA"
+)
+
+Environment.create!(
+  environment: "Production"
+)
+
+Environment.create!(
+  environment: "Training"
+)
+
+Environment.create!(
+  environment: "Staging"
+)
+
+Environment.create!(
+  environment: "Test"
+)
+
+puts "6 Environments created."
+
 Project.create!(
   name: "Chat",
   description: "Internal tool to communicate with team members.",
-  rancher: true,
-  environments_attributes: [{environment: 'Dev'}, {environment: 'QA'}, {environment: 'Production'}]
+  environment_id: 1
 )
 
 Project.create!(
   name: "IBO-IMS",
   description: "Internal tool to check sales of IBOs.",
-  rancher: false,
-  environments_attributes: [{environment: 'Dev'}]
+  environment_id: 1
 )
 
 Project.create!(
   name: "Client Services",
   description: "Internal tool to communicate with team members.",
-  rancher: false,
-  environments_attributes: [{environment: 'Dev'}]
+  environment_id: 1
 )
 
 Project.create!(
   name: "CASE",
   description: "Internal tool that's always broken.",
-  rancher: true,
-  environments_attributes: [{environment: 'Dev'}]
+  environment_id: 1
 )
 
 Project.create!(
   name: "Great DataWorks",
   description: "Database for data.",
-  rancher: true,
-  environments_attributes: [{environment: 'Dev'}]
+  environment_id: 1
 )
 
 puts "5 projects were created."
