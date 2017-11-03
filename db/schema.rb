@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171103190957) do
+ActiveRecord::Schema.define(version: 20171103220303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20171103190957) do
     t.string "environment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "project_id"
+    t.index ["project_id"], name: "index_environments_on_project_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -26,8 +28,6 @@ ActiveRecord::Schema.define(version: 20171103190957) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "environment_id"
-    t.index ["environment_id"], name: "index_projects_on_environment_id"
   end
 
   create_table "servers", force: :cascade do |t|
@@ -38,13 +38,13 @@ ActiveRecord::Schema.define(version: 20171103190957) do
     t.integer "storage"
     t.text "location"
     t.text "notes"
-    t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "operating_system"
-    t.index ["project_id"], name: "index_servers_on_project_id"
+    t.bigint "environment_id"
+    t.index ["environment_id"], name: "index_servers_on_environment_id"
   end
 
-  add_foreign_key "projects", "environments"
-  add_foreign_key "servers", "projects"
+  add_foreign_key "environments", "projects"
+  add_foreign_key "servers", "environments"
 end

@@ -15,63 +15,64 @@
 #   )
 # end
 
-Environment.create!(
-  environment: "Dev"
-)
-
-Environment.create!(
-  environment: "QA"
-)
-
-Environment.create!(
-  environment: "Production"
-)
-
-Environment.create!(
-  environment: "Training"
-)
-
-Environment.create!(
-  environment: "Staging"
-)
-
-Environment.create!(
-  environment: "Test"
-)
-
-puts "6 Environments created."
-
 Project.create!(
   name: "Chat",
   description: "Internal tool to communicate with team members.",
-  environment_id: 1
 )
 
 Project.create!(
   name: "IBO-IMS",
   description: "Internal tool to check sales of IBOs.",
-  environment_id: 1
 )
 
 Project.create!(
   name: "Client Services",
   description: "Internal tool to communicate with team members.",
-  environment_id: 1
 )
 
 Project.create!(
   name: "CASE",
   description: "Internal tool that's always broken.",
-  environment_id: 1
 )
 
 Project.create!(
   name: "Great DataWorks",
   description: "Database for data.",
-  environment_id: 1
 )
 
 puts "5 projects were created."
+
+Environment.create!(
+  environment: "Dev",
+  project_id: 1
+)
+
+Environment.create!(
+  environment: "QA",
+  project_id: 1
+)
+
+Environment.create!(
+  environment: "Production",
+  project_id: 1
+)
+
+Environment.create!(
+  environment: "Training",
+  project_id: 3
+)
+
+Environment.create!(
+  environment: "Staging",
+  project_id: 2
+)
+
+Environment.create!(
+  environment: "Test",
+  project_id: 4
+)
+
+puts "6 Environments created."
 
 5.times do |x|
   Server.create!(
@@ -82,7 +83,7 @@ puts "5 projects were created."
     storage: "50",
     location: "VLAN",
     operating_system: "Centos7",
-    project_id: "#{rand(1..5)}"
+    environment_id: "#{rand(1..5)}"
   )
 end
 
