@@ -13,7 +13,18 @@
 </p>
 
 <p>
-  <%= link_to 'Environments for this project', project_environments_path(@project) %>
+	<strong>Environments for this project:</strong>
+	<% @environments.each do |x| %>
+		<p> * <%= x.environment %> </p>
+	<% end %>
+</p>
+
+<p>
+	<strong>Create a new environment for this project:</strong>
+</p>
+
+<p>
+	<%#= link_to 'Add an environment to this project', new_project_environment_path %>
 </p>
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

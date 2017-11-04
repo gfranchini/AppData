@@ -1,7 +1,10 @@
 class EnvironmentsController < ApplicationController
   def index
-    env_id = Project.find(params[:project_id]).environment_id
-    @environment = Environment.find(env_id).environment
+  
+  end
+
+  def new
+    @project = Project.find(params[:project_id])
   end
 
   def dev
