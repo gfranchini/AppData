@@ -1,3 +1,10 @@
 <h1>Environments for this project.</h1>
 
-<%= @environment %>
+<% @environments.each do |x| %>
+  <p>* <%= x.environment %></p>
+<% end%>
+
+
+<h3>Add a new environment to this project</h3>
+
+<%= link_to 'Add new environment', new_project_environment_path, class: 'btn btn-primary' %>

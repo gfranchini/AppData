@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @project = Project.find(params[:id])
     @environments = Project.find(params[:id]).environments
   end
 
@@ -70,8 +71,8 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :description, :environment_id,
-        servers_attributes: [:hostname, :ip, :cpu, :memory, :storage, :location, :notes, :operating_system, :_destroy]
+      params.require(:project).permit(:name, :description,
+        servers_attributes: [:hostname, :ip, :cpu, :memory, :storage, :location, :notes, :operating_system, :_destroy],
       )
     end
 end
