@@ -8,9 +8,11 @@ class EnvironmentsController < ApplicationController
   end
 
   def new
+    @environment = Environment.new()
     @project = Project.find(params[:project_id]).name
     @project_id = params[:project_id]
-    @environment = Environment.new()
+    @environments = Project.find(params[:project_id]).environments
+
   end
 
   def create
