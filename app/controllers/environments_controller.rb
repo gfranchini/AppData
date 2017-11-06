@@ -3,6 +3,10 @@ class EnvironmentsController < ApplicationController
     @environments = Project.find(params[:project_id]).environments
   end
 
+  def show
+    @environment = Environment.find(params[:id])
+  end
+
   def new
     @project = Project.find(params[:project_id]).name
     @project_id = params[:project_id]
@@ -19,25 +23,6 @@ class EnvironmentsController < ApplicationController
         format.html { render :new }
       end
     end
-  end
-
-  def dev
-  end
-
-  def qa
-  end
-
-  def training
-  end
-
-  def staging
-  end
-
-  def production
-  end
-
-  def show
-
   end
 
   private
