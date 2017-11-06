@@ -4,33 +4,7 @@
   The project being modified is: <%= @project %>
 </p>
 
-<%= form_with(model: @environment, url: project_environments_path, local: true) do |form| %>
-  <% if @environment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@environment.errors.count, "error") %> prohibited this project from being saved:</h2>
-
-      <ul>
-      <% @environment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="form-group">
-      <%= form.label :name %>
-      <%= form.select :name, Environment.env_validator(@environments), {}, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.hidden_field :project_id, value: @project_id %>
-  </div>
-
-
-  <div class="actions">
-    <%= form.submit "Save Project", class: "btn btn-success" %>
-  </div>
-<% end %>
+<%= render 'form' %>
 
 <%= link_to 'Show', @project %> |
 <%= link_to 'Back', projects_path %>

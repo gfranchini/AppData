@@ -1,6 +1,7 @@
 class Environment < ApplicationRecord
   belongs_to :project
   has_many :servers
+  accepts_nested_attributes_for :servers
 
   def self.env_validator(project_envs)
     environments = ['Dev', 'QA', 'Production', 'Staging', 'Test']
@@ -12,7 +13,6 @@ class Environment < ApplicationRecord
 
     return collector - environments | environments - collector
     # array = project_envs.map { |r| r.attributes.symbolize_keys }
-
   end
 
 

@@ -21,34 +21,6 @@
     <%= form.text_area :description, id: :project_description, class: "form-control" %>
   </div>
 
-<!-- Start form for Servers -->
-  <!-- <h2>Add Servers: </h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Hostname</th>
-        <th>IP</th>
-        <th>OS</th>
-        <th>CPU</th>
-        <th>Memory</th>
-        <th>Storage</th>
-        <th>Location</th>
-      </tr>
-    </thead>
-    <tbody>
-      <div>
-        <%#= form.fields_for(:servers) do |server_form| %>
-          <%#= render 'server_fields', f: server_form %>
-        <%# end %>
-      </div>
-    </tbody>
-  </table>
-  <div>
-    <%#= link_to_add_association 'Add Server', form, :servers, class: "btn btn-primary" %>
-  </div> -->
-<!-- End form for Servers -->
-
-
   <div class="actions">
     <%= form.submit "Save Project", class: "btn btn-success" %>
   </div>
