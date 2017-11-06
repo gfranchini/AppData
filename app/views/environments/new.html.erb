@@ -17,10 +17,9 @@
     </div>
   <% end %>
 
-
   <div class="form-group">
-      <%= form.label :environment %>
-      <%= form.select :environment, [['Dev'], ['QA'], ['Production'], ['Training'], ['Staging'], ['Test']], {}, class: 'form-control' %>
+      <%= form.label :name %>
+      <%= form.select :name, [['Dev'], ['QA'], ['Production'], ['Training'], ['Staging'], ['Test']], {}, class: 'form-control' %>
   </div>
 
   <div class="form-group">

@@ -43,32 +43,32 @@ Project.create!(
 puts "5 projects were created."
 
 Environment.create!(
-  environment: "Dev",
+  name: "Dev",
   project_id: 1
 )
 
 Environment.create!(
-  environment: "QA",
+  name: "QA",
   project_id: 1
 )
 
 Environment.create!(
-  environment: "Production",
+  name: "Production",
   project_id: 1
 )
 
 Environment.create!(
-  environment: "Training",
+  name: "Training",
   project_id: 3
 )
 
 Environment.create!(
-  environment: "Staging",
+  name: "Staging",
   project_id: 2
 )
 
 Environment.create!(
-  environment: "Test",
+  name: "Test",
   project_id: 4
 )
 

@@ -16,7 +16,7 @@
 
 <% @environments.each do |x| %>
   <p>
-    * <%= link_to "#{x.environment}", project_environment_path( @project ,x.id ) %>
+    - <%= link_to "#{x.name}", project_environment_path( @project, x.id ) %>
   </p>
 <% end%>
 

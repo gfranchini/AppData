@@ -14,7 +14,7 @@ class EnvironmentsController < ApplicationController
   end
 
   def create
-    @environment = Environment.new(project_params)
+    @environment = Environment.new(environment_params)
 
     respond_to do |format|
       if @environment.save
@@ -27,7 +27,7 @@ class EnvironmentsController < ApplicationController
 
   private
 
-    def project_params
-      params.require(:environment).permit(:environment, :project_id)
+    def environment_params
+      params.require(:environment).permit(:name, :project_id)
     end
 end
