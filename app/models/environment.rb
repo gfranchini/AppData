@@ -1,7 +1,7 @@
 class Environment < ApplicationRecord
   belongs_to :project
   has_many :servers
-  accepts_nested_attributes_for :servers
+  accepts_nested_attributes_for :servers, allow_destroy: true
 
   def self.env_validator(project_envs)
     environments = ['Dev', 'QA', 'Production', 'Staging', 'Test']

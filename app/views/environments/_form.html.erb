@@ -1,4 +1,4 @@
-<%= form_with(model: @environment, url: project_environments_path, local: true) do |form| %>
+<%= form_with(model: @environment, url: project_environment_path, local: true) do |form| %>
   <% if @environment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@environment.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -11,10 +11,12 @@
     </div>
   <% end %>
 
+  <% if @environment.name == nil%>
   <div class="form-group">
       <%= form.label :name %>
       <%= form.select :name, Environment.env_validator(@environments), {}, class: 'form-control' %>
   </div>
+  <% end %>
 
   <div class="form-group">
     <%= form.hidden_field :project_id, value: @project_id %>
@@ -36,9 +38,9 @@
           </tr>
         </thead>
         <tbody>
-            <%= form.fields_for(:servers, Server.new) do |server_form| %>
-              <%= render 'server_fields', f: server_form %>
-            <% end %>
+        <%= form.fields_for(:servers) do |server_form| %>
+          <%= render 'server_fields', f: server_form %>
+        <% end %>
         </tbody>
       </table>
       <div>

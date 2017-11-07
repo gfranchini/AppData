@@ -6,12 +6,21 @@ class EnvironmentsController < ApplicationController
   def show
     @environment = Environment.find(params[:id])
     @servers = Environment.find(params[:id]).servers
+    @project_id = params[:project_id]
   end
 
   def new
     @environment = Environment.new()
     @project = Project.find(params[:project_id]).name
     @project_id = params[:project_id]
+    @environments = Project.find(params[:project_id]).environments
+  end
+
+  def edit
+    @environment = Environment.find(params[:id])
+    @project = Project.find(params[:project_id]).name
+    @project_id = params[:project_id]
+    @servers = Environment.find(params[:id]).servers
     @environments = Project.find(params[:project_id]).environments
   end
 
@@ -27,11 +36,23 @@ class EnvironmentsController < ApplicationController
     end
   end
 
+  def update
+    @environment = Environment.find(params[:id])
+
+    respond_to do |format|
+      if @environment.update(environment_params)
+        format.html { redirect_to projects_path, notice: 'Environment was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
+  end
+
   private
 
     def environment_params
       params.require(:environment).permit(:name, :project_id,
-      servers_attributes: [:hostname, :ip, :cpu, :memory, :storage, :location, :notes, :operating_system, :environment_id, :_destroy]
+      servers_attributes: [:id, :hostname, :ip, :cpu, :memory, :storage, :location, :notes, :operating_system, :environment_id, :_destroy]
       )
     end
 end
