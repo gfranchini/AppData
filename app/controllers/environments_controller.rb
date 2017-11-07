@@ -5,6 +5,7 @@ class EnvironmentsController < ApplicationController
 
   def show
     @environment = Environment.find(params[:id])
+    @servers = Environment.find(params[:id]).servers
   end
 
   def new
@@ -12,7 +13,6 @@ class EnvironmentsController < ApplicationController
     @project = Project.find(params[:project_id]).name
     @project_id = params[:project_id]
     @environments = Project.find(params[:project_id]).environments
-
   end
 
   def create

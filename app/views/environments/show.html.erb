@@ -1,3 +1,37 @@
-<h1>Information for this environment</h1>
+<p id="notice"><%= notice %></p>
 
-<%= @environment.name %>
+<h1>Information for this environment: <%= @environment.name %></h1>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>HostName</th>
+      <th>IP</th>
+      <th>CPU</th>
+      <th>Memory</th>
+      <th>Storage</th>
+      <th>Operating System</th>
+      <th>Location</th>
+      <th colspan="7"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @servers.each do |server| %>
+      <tr>
+        <td><%= server.hostname %></td>
+        <td><%= server.ip %></td>
+        <td><%= server.cpu %></td>
+        <td><%= server.memory %></td>
+        <td><%= server.storage %></td>
+        <td><%= server.operating_system %></td>
+        <td><%= server.location %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Back To Projects', projects_path %>

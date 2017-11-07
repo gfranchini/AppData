@@ -74,7 +74,7 @@ Environment.create!(
 
 puts "6 Environments created."
 
-5.times do |x|
+20.times do |x|
   Server.create!(
     hostname: "APPDEV#{x+1}",
     ip: "10.1.10.#{x+1}",
@@ -83,8 +83,8 @@ puts "6 Environments created."
     storage: "50",
     location: "VLAN",
     operating_system: "Centos7",
-    environment_id: "#{rand(1..5)}"
+    environment_id: "#{rand(1..6)}"
   )
 end
 
-puts "5 servers were created."
+puts "20 servers were created."
