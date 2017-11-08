@@ -1,4 +1,4 @@
-<%= form_with(model: @environment, url: project_environment_path, local: true) do |form| %>
+<%= form_with(model: @environment, url: new_project_environment_path, local: true) do |form| %>
   <% if @environment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@environment.errors.count, "error") %> prohibited this project from being saved:</h2>
