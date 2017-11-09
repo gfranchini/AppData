@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :environments
+  
   resources :projects do
     resources :environments
   end

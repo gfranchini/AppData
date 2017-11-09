@@ -4,6 +4,6 @@
   The project being modified is: <%= @project %>
 </p>
 
-<%= render 'form' %>
+<%= render 'form', environments: @environment %>
 
 <%= link_to 'Back', project_path(@project_id) %>
