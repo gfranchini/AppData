@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ip:</strong>
+  <%= @load_balancer.ip %>
+</p>
+
+<p>
+  <strong>Brand:</strong>
+  <%= @load_balancer.brand %>
+</p>
+
+<p>
+  <strong>Applicability:</strong>
+  <%= @load_balancer.applicability %>
+</p>
+
+<p>
+  <strong>Environment:</strong>
+  <%= @load_balancer.environment %>
+</p>
+
+<%= link_to 'Edit', edit_load_balancer_path(@load_balancer) %> |
+<%= link_to 'Back', load_balancers_path %>

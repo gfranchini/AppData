@@ -24,7 +24,7 @@
 
 <!-- Begin Servers form -->
   <div>
-      <h2>Add Servers: </h2>
+      <h2>Add Servers </h2>
       <table class="table">
         <thead>
           <tr>
@@ -38,8 +38,8 @@
           </tr>
         </thead>
         <tbody>
-        <%= form.fields_for(:servers) do |server_form| %>
-          <%= render 'server_fields', f: server_form %>
+        <%= form.fields_for(:servers) do |server| %>
+          <%= render 'server_fields', f: server %>
         <% end %>
         </tbody>
       </table>
@@ -50,6 +50,31 @@
 
   <hr>
   <!-- End Servers form -->
+
+  <!-- Begin Load Balancers form -->
+    <div>
+        <h2>Add Load Balancers </h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>IP</th>
+              <th>Type</th>
+              <th>Applicability</th>
+            </tr>
+          </thead>
+          <tbody>
+          <%= form.fields_for(:load_balancers) do |load_balancer| %>
+            <%= render 'load_balancer_fields', f: load_balancer %>
+          <% end %>
+          </tbody>
+        </table>
+        <div>
+          <%= link_to_add_association('Add Load Balancer', form, :load_balancers, class: "btn btn-primary") %>
+        </div>
+    </div>
+
+    <hr>
+    <!-- End Load Balancers form -->
 
   <div class="actions">
     <%= form.submit "Save Environment", class: "btn btn-success" %>

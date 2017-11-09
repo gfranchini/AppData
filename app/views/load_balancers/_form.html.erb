@@ -1,0 +1,37 @@
+<%= form_with(model: load_balancer, local: true) do |form| %>
+  <% if load_balancer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(load_balancer.errors.count, "error") %> prohibited this load_balancer from being saved:</h2>
+
+      <ul>
+      <% load_balancer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :ip %>
+    <%= form.text_field :ip, id: :load_balancer_ip %>
+  </div>
+
+  <div class="field">
+    <%= form.label :brand %>
+    <%= form.text_field :brand, id: :load_balancer_brand %>
+  </div>
+
+  <div class="field">
+    <%= form.label :applicability %>
+    <%= form.text_field :applicability, id: :load_balancer_applicability %>
+  </div>
+
+  <div class="field">
+    <%= form.label :environment_id %>
+    <%= form.text_field :environment_id, id: :load_balancer_environment_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :load_balancers
   resources :environments
   
   resources :projects do

@@ -16,12 +16,12 @@
 
 <% @environments.each do |x| %>
   <p>
-    - <%= link_to "#{x.name}", project_environment_path( @project, x.id ) %>
+    <%= link_to("#{x.name}", project_environment_path(@project, x.id), class: "btn btn-info")  %>
   </p>
 <% end%>
 
 <p>
-	<%= link_to 'Add an environment to this project', new_project_environment_path(@project), class: 'btn btn-primary' %>
+	<%= link_to('Add an environment to this project', new_project_environment_path(@project), class: 'btn btn-primary') %>
 </p>
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

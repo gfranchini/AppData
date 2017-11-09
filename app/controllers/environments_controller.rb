@@ -52,7 +52,8 @@ class EnvironmentsController < ApplicationController
 
     def environment_params
       params.require(:environment).permit(:name, :project_id,
-      servers_attributes: [:id, :hostname, :ip, :cpu, :memory, :storage, :location, :notes, :operating_system, :environment_id, :_destroy]
+      servers_attributes: [:id, :hostname, :ip, :cpu, :memory, :storage, :location, :notes, :operating_system, :environment_id, :_destroy],
+      load_balacers_attributes: [:ip, :brand, :applicability, :environment_id, :_destroy]
       )
     end
 end
