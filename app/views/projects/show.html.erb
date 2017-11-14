@@ -1,27 +1,43 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Project Information</h1>
-
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
-
-<h1>Environments for this project.</h1>
-
-<% @environments.each do |x| %>
+<div class="col-lg-10 col-md-8">
   <p>
-    <%= link_to("#{x.name}", project_environment_path(@project, x.id), class: "btn btn-info")  %>
+    <strong>Name:</strong>
+    <%= @project.name %>
   </p>
-<% end%>
+
+  <p>
+    <strong>Description:</strong>
+    <%= @project.description %>
+  </p>
+
+  <h1>Environments for this project.</h1>
+</div>
+
+<!-- Card -->
+<div class="row">
+  <% @environments.each do |x| %>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <%= link_to("#{x.name}", project_environment_path(@project, x.id), class: "panel panel-default")  %>
+                  </h4>
+                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">★ ★ ★ ★ ☆</small>
+                </div>
+              </div>
+            </div>
+  <% end %>
+</div>
 
 <p>
 	<%= link_to('Add an environment to this project', new_project_environment_path(@project), class: 'btn btn-primary') %>
 </p>
+
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
