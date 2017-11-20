@@ -1,19 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Project Information</h1>
 <div class="col-lg-10 col-md-8">
-  <p>
-    <strong>Name:</strong>
-    <%= @project.name %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= @project.description %>
-  </p>
-
-  <h1>Environments for this project.</h1>
-</div>
+  <h1>Environments for: <strong><%= @project.name %></strong></h1>
 
 <!-- Card -->
 <div class="row">
@@ -23,9 +11,9 @@
                 <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
-                    <%= link_to("#{x.name}", project_environment_path(@project, x.id), class: "panel panel-default")  %>
+                    <%= link_to("#{x.name}", project_environment_path(@project, x.id))  %>
                   </h4>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                  <p class="card-text"><%= @project.description %></p>
                 </div>
                 <div class="card-footer">
                   <small class="text-muted">★ ★ ★ ★ ☆</small>
@@ -41,3 +29,5 @@
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
+
+</div>
