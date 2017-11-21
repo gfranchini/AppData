@@ -16,7 +16,8 @@
                   <p class="card-text"><%= @project.description %></p>
                 </div>
                 <div class="card-footer">
-                  <small class="text-muted">★ ★ ★ ★ ☆</small>
+                  <!-- <small class="text-muted">★ ★ ★ ★ ☆</small> -->
+                  <td><%= link_to 'Delete', project_environment_path(@project, x.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
                 </div>
               </div>
             </div>

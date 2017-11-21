@@ -49,6 +49,14 @@ class EnvironmentsController < ApplicationController
     end
   end
 
+  def destroy
+    @environment = Environment.find(params[:id])
+    @environment.destroy
+    respond_to do |format|
+      format.html { redirect_to projects_path, notice: 'Environment was successfully deleted.' }
+    end
+  end
+
   private
 
     def environment_params

@@ -1,7 +1,7 @@
 class Environment < ApplicationRecord
   belongs_to :project
-  has_many :servers
-  has_many :load_balancers
+  has_many :servers, dependent: :destroy
+  has_many :load_balancers, dependent: :destroy
   accepts_nested_attributes_for :servers, reject_if: proc { |attributes| attributes['ip'].blank? }, allow_destroy: true
   accepts_nested_attributes_for :load_balancers, allow_destroy: true
 
@@ -15,6 +15,11 @@ class Environment < ApplicationRecord
 
     return collector - environments | environments - collector
     # array = project_envs.map { |r| r.attributes.symbolize_keys }
+  end
+
+  private
+  def server_validation
+
   end
 
 
