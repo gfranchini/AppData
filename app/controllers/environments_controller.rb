@@ -14,6 +14,7 @@ class EnvironmentsController < ApplicationController
     @project = Project.find(params[:project_id]).name
     @project_id = params[:project_id]
     @environments = Project.find(params[:project_id]).environments
+    @@project_id = params[:project_id]
   end
 
   def edit
@@ -29,7 +30,7 @@ class EnvironmentsController < ApplicationController
 
     respond_to do |format|
       if @environment.save
-        format.html { redirect_to projects_path, notice: 'Environment was added to project.' }
+        format.html { redirect_to project_path(@@project_id), notice: 'Environment was added to project.' }
       else
         format.html { render :new }
       end
