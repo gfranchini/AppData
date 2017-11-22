@@ -17,10 +17,4 @@ class Environment < ApplicationRecord
     # array = project_envs.map { |r| r.attributes.symbolize_keys }
   end
 
-  private
-  def server_validation
-
-  end
-
-
 end
