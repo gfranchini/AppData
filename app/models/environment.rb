@@ -6,7 +6,7 @@ class Environment < ApplicationRecord
   accepts_nested_attributes_for :load_balancers, allow_destroy: true
 
   def self.env_validator(project_envs)
-    environments = ['Dev', 'QA', 'Production', 'Staging', 'Test']
+    environments = ['Development', 'QA', 'Production', 'Staging', 'Test']
     collector = []
 
     project_envs.map(&:attributes).each do |x|

@@ -11,7 +11,7 @@
 #     name: "Project #{x + 1}",
 #     description: "Dashboard for IBOs.",
 #     rancher: true,
-#     environments_attributes: [{environment: 'Dev'}]
+#     environments_attributes: [{environment: 'Development'}]
 #   )
 # end
 
@@ -43,7 +43,7 @@ Project.create!(
 puts "5 projects were created."
 
 Environment.create!(
-  name: "Dev",
+  name: "Development",
   project_id: 1,
   docker: true,
   rancher: true
@@ -88,7 +88,7 @@ puts "6 Environments created."
 
 20.times do |x|
   Server.create!(
-    hostname: "APPDEV#{x+1}",
+    hostname: "APPDevelopment#{x+1}",
     ip: "10.1.10.#{x+1}",
     cpu: "4",
     memory: "8",

@@ -17,7 +17,21 @@
                 </div>
                 <div class="card-footer">
                   <!-- <small class="text-muted">★ ★ ★ ★ ☆</small> -->
-                  <td><%= link_to 'Delete', project_environment_path(@project, x.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+                  <div class="text-center">
+                    <% if x.docker %>
+                      Dockerized |
+                    <% else %>
+                      Not Dockerized |
+                    <% end %>
+
+                    <% if x.rancher %>
+                      Rancherized
+                    <% else %>
+                      Not Rancherized
+                    <% end %>
+                  </div>
+                  <hr>
+                  <td><%= link_to 'Delete', project_environment_path(@project, x.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger float-right" %></td>
                 </div>
               </div>
             </div>
