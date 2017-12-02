@@ -22,6 +22,17 @@
     <%= form.hidden_field :project_id, value: @project_id %>
   </div>
 
+<!-- Section for radio buttons -->
+  <div>
+    <p>
+      Dockerized?: <%= form.check_box :docker%>
+    </p>
+    <p>
+      Rancherized?: <%= form.check_box :rancher%>
+    </p>
+  </div>
+<!-- End Section for radio buttons -->
+
 <!-- Begin Servers form -->
   <div>
       <h2>Add Servers </h2>

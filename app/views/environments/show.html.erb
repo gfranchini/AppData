@@ -37,6 +37,13 @@
   <!-- /.panel-body -->
 </div>
 <hr>
+  <p>
+    Dockerized?: <%= @environment.docker %>
+  </p>
+  <p>
+    Rancher?: <%= @environment.rancher %>
+  </p>
+<hr>
 <p>
   <%= link_to 'Edit this environment', edit_project_environment_path, class: "btn btn-primary" %>
 </p>

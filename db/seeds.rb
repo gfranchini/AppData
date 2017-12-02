@@ -44,32 +44,44 @@ puts "5 projects were created."
 
 Environment.create!(
   name: "Dev",
-  project_id: 1
+  project_id: 1,
+  docker: true,
+  rancher: true
 )
 
 Environment.create!(
   name: "QA",
-  project_id: 1
+  project_id: 1,
+  docker: true,
+  rancher: true
 )
 
 Environment.create!(
   name: "Production",
-  project_id: 1
+  project_id: 1,
+  docker: true,
+  rancher: false
 )
 
 Environment.create!(
   name: "Training",
-  project_id: 3
+  project_id: 3,
+  docker: true,
+  rancher: false
 )
 
 Environment.create!(
   name: "Staging",
-  project_id: 2
+  project_id: 2,
+  docker: true,
+  rancher: false
 )
 
 Environment.create!(
   name: "Test",
-  project_id: 4
+  project_id: 4,
+  docker: true,
+  rancher: true
 )
 
 puts "6 Environments created."
