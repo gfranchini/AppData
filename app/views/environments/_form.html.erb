@@ -1,4 +1,4 @@
-<%= form_with(model: @environment, local: true) do |form| %>
+<%= form_with(model: @environment, local: true, html: { multipart: true }) do |form| %>
   <% if @environment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@environment.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -87,6 +87,11 @@
 
     <hr>
     <!-- End Load Balancers form -->
+
+    <!-- Upload architecture via PaperClip -->
+    <%= form.file_field :architecture %>
+    <!-- End Upload architecture via PaperClip -->
+
 
   <div class="actions">
     <%= form.submit "Save Environment", class: "btn btn-success" %>

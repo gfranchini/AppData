@@ -34,3 +34,4 @@ gem 'jquery-rails'
 gem 'cocoon', '~> 1.2', '>= 1.2.9'
 gem 'pry'
 gem 'activemodel-ipaddr_validator', '~> 0.0.2'
+gem "paperclip", "~> 5.0.0"
