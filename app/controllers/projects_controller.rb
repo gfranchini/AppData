@@ -1,30 +1,28 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
-  # GET /projects
-  # GET /projects.json
   def index
     @projects = Project.all
+    # If statement for search
+    if params[:search]
+      @projects = Project.search(params[:search]).order("created_at DESC")
+    else
+      @projects = Project.all.order("created_at DESC")
+    end
   end
 
-  # GET /projects/1
-  # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
     @environments = Project.find(params[:id]).environments
   end
 
-  # GET /projects/new
   def new
     @project = Project.new
   end
 
-  # GET /projects/1/edit
   def edit
   end
 
-  # POST /projects
-  # POST /projects.json
   def create
     @project = Project.new(project_params)
 
@@ -39,8 +37,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /projects/1
-  # PATCH/PUT /projects/1.json
   def update
     respond_to do |format|
       if @project.update(project_params)
@@ -53,8 +49,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # DELETE /projects/1
-  # DELETE /projects/1.json
   def destroy
     @project.destroy
     respond_to do |format|
