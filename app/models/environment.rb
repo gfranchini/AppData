@@ -17,7 +17,6 @@ class Environment < ApplicationRecord
     end
 
     return collector - environments | environments - collector
-    # array = project_envs.map { |r| r.attributes.symbolize_keys }
   end
 
 end

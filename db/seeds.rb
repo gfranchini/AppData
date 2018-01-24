@@ -47,7 +47,8 @@ projects = {
   "Password Reset": "To reset your password.",
   "Totalee": "Hair product store.",
   "WWE OmegaXL": "OmegaXL with WWE sponsorship.",
-  "Towzing App": "Mobile app to summon towers, like Uber."
+  "Towzing App": "Mobile app to summon towers, like Uber.",
+  "GVW University": "Freddie's training site."
 }
 
 projects.each do |name,description|

@@ -17,17 +17,6 @@
     </nav>
     <!-- End Nav Bar -->
 
-    <!-- Search Bar -->
-    <%= form_tag(projects_path, :method => "get", id: "search-form") do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Search Projects" %>
-      <%= submit_tag "Search", :name => nil %>
-    <% end %>
-
-    <% if @projects.blank? %>
-      <center><h4>There are no projects containing the term "<%= params[:search] %>".</h4></center>
-    <% end %>
-    <!-- End Search Bar  -->
-
     <div class="container">
       <%= yield %>
     </div>

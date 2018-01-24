@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180122232506) do
+ActiveRecord::Schema.define(version: 20180124191017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20180122232506) do
     t.string "architecture_content_type"
     t.integer "architecture_file_size"
     t.datetime "architecture_updated_at"
+    t.string "url"
     t.index ["project_id"], name: "index_environments_on_project_id"
   end
 
