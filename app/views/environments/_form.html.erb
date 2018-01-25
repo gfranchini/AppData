@@ -98,7 +98,7 @@
     <!-- Upload architecture via PaperClip -->
 
     <div class="text-center">
-      <% if @environment.architecture_file_name %>
+      <% if @environment.architecture.exists? %>
         <%= image_tag @environment.architecture.url(:medium) %>
         <br>
         <%= link_to "Click here for larger view.", @environment.architecture.url %>
