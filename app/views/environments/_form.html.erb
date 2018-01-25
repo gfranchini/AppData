@@ -71,7 +71,7 @@
   <!-- End Servers form -->
 
   <!-- Begin Load Balancers form -->
-    <div>
+    <!-- <div>
         <h2>Add Load Balancers </h2>
         <table class="table">
           <thead>
@@ -92,11 +92,24 @@
         </div>
     </div>
 
-    <hr>
+    <hr> -->
     <!-- End Load Balancers form -->
 
     <!-- Upload architecture via PaperClip -->
-    <%= form.file_field :architecture %>
+
+    <div class="text-center">
+      <% if @environment.architecture_file_name %>
+        <%= image_tag @environment.architecture.url(:medium) %>
+        <br>
+        <%= link_to "Click here for larger view.", @environment.architecture.url %>
+      <% else %>
+        No architecture uploaded. Upload one now!
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= form.file_field :architecture %>
+    </div>
     <!-- End Upload architecture via PaperClip -->
 
 

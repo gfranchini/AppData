@@ -37,6 +37,10 @@
   <!-- /.panel-body -->
 </div>
 <hr>
+
+  <p>
+    Domain name: <%= link_to "#{@environment.url}", @environment.url, target: :_blank %>
+  </p>
   <p>
     Dockerized?: <%= @environment.docker %>
   </p>
@@ -48,7 +52,7 @@
 <h1>Architecture Diagram</h1>
 
 <div class="text-center">
-  <% if @environment.architecture %>
+  <% if @environment.architecture.exists? %>
     <%= image_tag @environment.architecture.url(:medium) %>
     <br>
     <%= link_to "Click here for larger view.", @environment.architecture.url %>

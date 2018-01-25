@@ -42,7 +42,7 @@ class EnvironmentsController < ApplicationController
 
     respond_to do |format|
       if @environment.update(environment_params)
-        format.html { redirect_to projects_path, notice: 'Environment was successfully updated.' }
+        format.html { redirect_to project_environment_path(@environment), notice: 'Environment was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -55,6 +55,11 @@ class EnvironmentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to projects_path, notice: 'Environment was successfully deleted.' }
     end
+  end
+
+  def delete_image
+    @environment = Environment.find(params[:id])
+    @environment.architecture
   end
 
   private
