@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180124191017) do
+ActiveRecord::Schema.define(version: 20180125215959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,10 @@ ActiveRecord::Schema.define(version: 20180124191017) do
     t.integer "architecture_file_size"
     t.datetime "architecture_updated_at"
     t.string "url"
+    t.text "notes"
+    t.string "dbhost"
+    t.string "dbuser"
+    t.string "dbname"
     t.index ["project_id"], name: "index_environments_on_project_id"
   end
 

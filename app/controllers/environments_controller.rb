@@ -30,7 +30,7 @@ class EnvironmentsController < ApplicationController
 
     respond_to do |format|
       if @environment.save
-        format.html { redirect_to project_path(@@project_id), notice: 'Environment was added to project.' }
+        format.html { redirect_to project_path(@project_id), notice: 'Environment was added to project.' }
       else
         format.html { render :new }
       end
@@ -65,7 +65,7 @@ class EnvironmentsController < ApplicationController
   private
 
     def environment_params
-      params.require(:environment).permit(:name, :project_id, :docker, :rancher, :architecture, :url,
+      params.require(:environment).permit(:name, :project_id, :docker, :rancher, :architecture, :url, :dbname, :dbhost, :dbuser,
       servers_attributes: [:id, :hostname, :ip, :cpu, :memory, :storage, :location, :notes, :operating_system, :environment_id, :_destroy],
       load_balacers_attributes: [:ip, :brand, :applicability, :environment_id, :_destroy]
       )

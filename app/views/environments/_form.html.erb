@@ -70,6 +70,28 @@
   <hr>
   <!-- End Servers form -->
 
+  <!-- Begin Database configs -->
+
+  <h2>Database Information</h2>
+  <div class="form-group">
+    <%= form.label "Database host" %>
+    <%= form.text_field :dbhost, id: :dbhost, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label "Database user" %>
+    <%= form.text_field :dbuser, id: :dbuser, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label "Database name" %>
+    <%= form.text_field :dbname, id: :dbname, class: "form-control" %>
+  </div>
+
+  <hr>
+
+  <!-- End database configs -->
+
   <!-- Begin Load Balancers form -->
     <!-- <div>
         <h2>Add Load Balancers </h2>
