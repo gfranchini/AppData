@@ -7,6 +7,7 @@ class EnvironmentsController < ApplicationController
     @environment = Environment.find(params[:id])
     @servers = Environment.find(params[:id]).servers
     @project_id = params[:project_id]
+    @project = Project.find(params[:project_id])
   end
 
   def new
@@ -42,7 +43,7 @@ class EnvironmentsController < ApplicationController
 
     respond_to do |format|
       if @environment.update(environment_params)
-        format.html { redirect_to project_environment_path(@environment), notice: 'Environment was successfully updated.' }
+        format.html { redirect_to project_environment_path(@environment.project_id), notice: 'Environment was successfully updated.' }
       else
         format.html { render :edit }
       end
