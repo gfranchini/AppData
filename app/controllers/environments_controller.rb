@@ -30,7 +30,7 @@ class EnvironmentsController < ApplicationController
 
     respond_to do |format|
       if @environment.save
-        format.html { redirect_to project_path(@project_id), notice: 'Environment was added to project.' }
+        format.html { redirect_to project_path(@environment.project_id), notice: 'Environment was added to project.' }
       else
         format.html { render :new }
       end
@@ -52,14 +52,11 @@ class EnvironmentsController < ApplicationController
   def destroy
     @environment = Environment.find(params[:id])
     @environment.destroy
-    respond_to do |format|
-      format.html { redirect_to projects_path, notice: 'Environment was successfully deleted.' }
-    end
-  end
 
-  def delete_image
-    @environment = Environment.find(params[:id])
-    @environment.architecture
+    @project = Project.find(params[:id])
+    respond_to do |format|
+      format.html { redirect_to project_path(@environment.project_id), notice: 'Environment was successfully deleted.' }
+    end
   end
 
   private
