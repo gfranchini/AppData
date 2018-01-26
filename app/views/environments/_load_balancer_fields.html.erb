@@ -4,7 +4,7 @@
       <td><%= f.text_field :ip, class: "form-control" %></td>
       <td><%= f.select(:brand, ["HA Proxy", "Max Scale", "Kemp"],{}, {class: "form-control"}) %></td>
       <td><%= f.select(:applicability, ["FrontEnd", "BackEnd", "Database"],{}, {class: "form-control"}) %></td>
-      <td><%= link_to_remove_association 'Remove Load Balancer', f, class: "btn btn-danger" %></td>
+      <td><%= link_to_remove_association 'x', f, class: "btn btn-danger" %></td>
     </tr>
   </tbody>
 </table>

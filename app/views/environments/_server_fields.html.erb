@@ -8,7 +8,7 @@
       <td><%= f.number_field :memory, class: "form-control" %></th>
       <td><%= f.number_field :storage, class: "form-control" %></td>
       <td><%= f.select(:location, ["GHW", "COLO", "AWS"], {}, {class: "form-control"}) %></td>
-      <td><%= link_to_remove_association 'Remove Server', f, class: "btn btn-danger" %></td>
+      <td><%= link_to_remove_association 'x', f, class: "btn btn-danger" %></td>
     </tr>
   </tbody>
 </table>

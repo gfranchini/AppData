@@ -53,7 +53,6 @@
             <th class="text-center">Memory</th>
             <th class="text-center">Storage</th>
             <th class="text-center">Location</th>
-            <th class="text-center">Options</th>
           </tr>
         </thead>
         <tbody>
@@ -79,6 +78,11 @@
   </div>
 
   <div class="form-group">
+    <%= form.label "Database port" %>
+    <%= form.text_field :dbport, id: :dbport, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
     <%= form.label "Database user" %>
     <%= form.text_field :dbuser, id: :dbuser, class: "form-control" %>
   </div>
@@ -91,6 +95,15 @@
   <hr>
 
   <!-- End database configs -->
+
+  <!-- Begin deployment notes -->
+  <h2>Deployment Notes</h2>
+  <div class="form-group">
+
+    <%= form.text_area :notes, id: :notes, class: "form-control" %>
+  </div>
+
+  <!-- End deployment notes -->
 
   <!-- Begin Load Balancers form -->
     <!-- <div>

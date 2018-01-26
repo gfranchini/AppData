@@ -53,6 +53,7 @@
 
 <div>
   <br><strong>Datbase host:</strong> <%= @environment.dbhost %>
+  <br><strong>Datbase port:</strong> <%= @environment.dbport %>
   <br><strong>Database user:</strong> <%= @environment.dbuser %>
   <br><strong>Database name:</strong> <%= @environment.dbname %>
 </div>
@@ -60,6 +61,20 @@
 <hr>
 
 <!-- End database configs -->
+
+<!-- Notes / Deployment Instructions -->
+<h2>Deployment Notes</h2>
+  <div>
+    <% if @environment.notes == "" %>
+      <p>
+        <center>Nothing to show.</center>
+      </p>
+    <% else %>
+      <%= @environment.notes %>
+    <% end %>
+  </div>
+<hr>
+<!-- End Notes / Deployment Instructions -->
 
 <h2>Architecture Diagram</h2>
 
