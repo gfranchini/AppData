@@ -6,13 +6,18 @@ class EnvironmentsController < ApplicationController
   end
 
   def show
-    @environment = Environment.find(params[:id])
-    @servers = Environment.find(params[:id]).servers
-    @project_id = params[:project_id]
-    @project = Project.find(params[:project_id])
+    if Environment.find_by(id: params[:id])
+      @environment = Environment.find(params[:id])
+      @servers = Environment.find(params[:id]).servers
+      @project_id = params[:project_id]
+      @project = Project.find(params[:project_id])
 
-    if !@project.environments.find_by(id: @environment.id)
-      redirect_to project_path(@project_id), danger: "That environment does not exist for this project."
+      if !@project.environments.find_by(id: @environment.id)
+        redirect_to project_path(@project_id), danger: "That environment does not exist for this project."
+      end
+
+    else
+      redirect_to projects_path, danger: "This environment does not exist."
     end
   end
 
