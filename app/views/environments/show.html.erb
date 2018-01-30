@@ -65,9 +65,9 @@
 <!-- Notes / Deployment Instructions -->
 <h2>Deployment Notes</h2>
   <div>
-    <% if @environment.notes == "" %>
+    <% if @environment.notes == "" || @environment.notes == nil %>
       <p>
-        <center>Nothing to show.</center>
+        <center>No notes saved to DB.</center>
       </p>
     <% else %>
       <%= @environment.notes %>

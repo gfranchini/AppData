@@ -1,4 +1,6 @@
 class EnvironmentsController < ApplicationController
+  before_action
+
   def index
     @environments = Project.find(params[:project_id]).environments
   end
@@ -8,6 +10,10 @@ class EnvironmentsController < ApplicationController
     @servers = Environment.find(params[:id]).servers
     @project_id = params[:project_id]
     @project = Project.find(params[:project_id])
+
+    if !@project.environments.find_by(id: @environment.id)
+      redirect_to project_path(@project_id), danger: "That environment does not exist for this project."
+    end
   end
 
   def new
