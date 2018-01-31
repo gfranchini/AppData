@@ -3,3 +3,7 @@
 .nav-links a {
   color: white;
 }
+
+.alert-alert {
+  @extend .alert-danger;
+}
